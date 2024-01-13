@@ -1,0 +1,87 @@
+name: Boiler(TL)
+products:
+  - id: s58qrwktuxbbbspj
+primary_entity:
+  entity: climate
+  dps:
+    - id: 1
+      name: hvac_mode
+      type: boolean
+      mapping:
+        - dps_val: false
+          constraint: mode
+          conditions:
+            - dps_val: T0
+              value: "off"
+            - dps_val: T30
+              value: "heat"
+            - dps_val: T60
+              value: "heat"
+            - dps_val: T90
+              value: "heat"
+            - dps_val: T120
+              value: "heat"
+          # value: "off"
+        - dps_val: true
+          value: "heat"
+    - id: 102
+      name: mode
+      type: string
+      # readonly: true
+      # hidden: true
+    - id: 20
+      type: integer
+      name: Total kW/h
+      unit: kwh
+      range:
+        min: 0
+        max: 50000
+      mapping:
+        - scale: 1000
+          step: 100
+      readonly: true
+    - id: 21
+      type: integer
+      name: Current current
+      unit: mA
+      range:
+        min: 0
+        max: 30000
+      mapping:
+        - scale: 1
+          step: 1
+      readonly: true
+    - id: 22
+      type: integer
+      name: Current voltage
+      unit: V
+      range:
+        min: 0
+        max: 5000
+      mapping:
+        - scale: 10
+          step: 1
+      readonly: true
+    - id: 23
+      type: integer
+      name: Current power
+      unit: W
+      range:
+        min: 0
+        max: 50000
+      mapping:
+        - scale: 10
+          step: 1
+      readonly: true
+    - id: 103
+      name: temperature
+      type: integer
+      unit: sec
+      #force: true
+      range:
+        min: 0
+        max: 1800
+        #max: 7210
+      mapping:
+        - scale: 1
+          step: 1
